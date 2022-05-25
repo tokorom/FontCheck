@@ -23,6 +23,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textDidChangeWithTextField:" destination="BYZ-38-t0r" eventType="editingChanged" id="R5H-ld-L76"/>
+                                        </connections>
                                     </textField>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cUB-IZ-RnI">
                                         <rect key="frame" x="0.0" y="44" width="394" height="32"/>
@@ -30,6 +33,9 @@
                                             <segment title="System"/>
                                             <segment title="Hiragino"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="segmentedChangedWithSegmented:" destination="BYZ-38-t0r" eventType="valueChanged" id="Yag-Yh-1bb"/>
+                                        </connections>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yP-0v-oB2">
                                         <rect key="frame" x="0.0" y="85" width="394" height="32"/>
@@ -44,13 +50,19 @@
                                                 <rect key="frame" x="75.5" y="0.0" width="224.5" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="fontSizeTextDidChangeWithTextField:" destination="BYZ-38-t0r" eventType="editingChanged" id="IXS-T3-ZCO"/>
+                                                </connections>
                                             </textField>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="16" minimumValue="1" maximumValue="1000" stepValue="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="he9-Lt-wni">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="16" minimumValue="6" maximumValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="he9-Lt-wni">
                                                 <rect key="frame" x="300" y="0.0" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stepperDidChangeWithStepper:" destination="BYZ-38-t0r" eventType="valueChanged" id="lSO-qm-lvn"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YIN-uk-fSG">
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YIN-uk-fSG">
                                         <rect key="frame" x="0.0" y="127" width="394" height="671"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXV-oF-ALt">
@@ -72,19 +84,29 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="WjV-Py-fQ0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="8AP-E6-leb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WjV-Py-fQ0" secondAttribute="bottom" constant="10" id="9Yo-wd-S2B"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WjV-Py-fQ0" secondAttribute="trailing" constant="10" id="XCN-kx-mzb"/>
                             <constraint firstItem="WjV-Py-fQ0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="mV4-g2-HtX"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="uql-YA-5Et" appends="YES" id="Wxo-f6-s0h"/>
+                        </connections>
                     </view>
                     <connections>
+                        <outlet property="fontSizeTextField" destination="Thf-rn-jg5" id="ymH-8D-udX"/>
                         <outlet property="label" destination="xXV-oF-ALt" id="cbx-Z1-IZT"/>
                         <outlet property="textField" destination="ojE-FU-9Dc" id="3ba-Hp-o7r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="uql-YA-5Et">
+                    <connections>
+                        <action selector="tapGestureWithSender:" destination="BYZ-38-t0r" id="Ape-NM-BLb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="132" y="117"/>
         </scene>

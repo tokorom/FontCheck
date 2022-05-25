@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet private weak var label: UILabel?
     @IBOutlet private weak var textField: UITextField?
+    @IBOutlet private weak var fontSizeTextField: UITextField?
 
     private var style: FontStyle = .init() {
         didSet {
@@ -37,6 +38,42 @@ class ViewController: UIViewController {
         )
 
         label?.attributedText = attributedString
+    }
+
+    @IBAction func textDidChange(textField: UITextField) {
+        updateLabel()
+    }
+
+    @IBAction func stepperDidChange(stepper: UIStepper) {
+        let fontSize = CGFloat(stepper.value)
+
+        style.fontSize = fontSize
+
+        fontSizeTextField?.text = String(describing: fontSize)
+    }
+
+    @IBAction func fontSizeTextDidChange(textField: UITextField) {
+        guard let value = Double(textField.text ?? "") else {
+            return
+        }
+
+        let fontSize = CGFloat(value)
+
+        style.fontSize = fontSize
+    }
+
+    @IBAction func segmentedChanged(segmented: UISegmentedControl) {
+        switch segmented.selectedSegmentIndex {
+        case 0:
+            style.fontKind = .system
+        default:
+            style.fontKind = .hiragino
+        }
+    }
+
+    @IBAction func tapGesture(sender: AnyObject) {
+        textField?.resignFirstResponder()
+        fontSizeTextField?.resignFirstResponder()
     }
 }
 
